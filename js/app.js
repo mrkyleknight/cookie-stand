@@ -23,40 +23,36 @@ let Seattle = {
   minCustomer: 23,
   maxCustomer: 65,
   avgCookieBought: 6.3,
-  customerNumber: 0,
-  // cookiesPerHour:[],
+  customersPerHour: [],
+  cookiesPerHour: [],
   totalDailyCookies: 0,
-  randomNumCustomer: function(min, max) {
-   return Math.floor(Math.random() * (max - min + 1) + min); 
+  randomNumCustomer: function() {
+    return Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
   },
-
-  getNum: function () {
-    this.customerNumber = this.randomNumCustomer(23,65);
-    return this.customerNumber;
-
-  },
-
-
-  cookiePurchase: [],
-  totalCookies: 0,
-
-  render: function () {
+  simulateCookies: function() {
     for (let i = 0; i < hours.length; i++) {
-      let cookiesBought = (this.avgCookieBought * this.getNum());
-      console.log (cookiesBought);
-      this.totalCookies += cookiesBought;
-
-      this.cookiePurchase.push(cookiesBought);
-
+      let customers = this.randomNumCustomer();
+      this.customersPerHour.push(customers);
+      let cookiesBought = Math.round(this.avgCookieBought * customers);
+      this.cookiesPerHour.push(cookiesBought);
+      this.totalDailyCookies += cookiesBought;
     }
-  }      
-            
-}
-Seattle.render(); 
+  },
+  displayResults: function() {
+    let salesList = document.getElementById('seattle-sales');
+    for (let i = 0; i < hours.length; i++) {
+      let listItem = document.createElement('li');
+      listItem.textContent = `${hours[i]}: ${this.cookiesPerHour[i]} cookies`;
+      salesList.appendChild(listItem);
+    }
+    let totalItem = document.createElement('li');
+    totalItem.textContent = `Total sales: ${this.totalDailyCookies} cookies`;
+    salesList.appendChild(totalItem);
+  }
+};
 
-console.log(this.cookiePurchase);
-console.log('TotalSales:', this.totalCookies);
-  
+Seattle.simulateCookies();
+Seattle.displayResults();
   // calculateCookiesPerHour: function(){
   //   for (let i =0; i < hours.length; i++){
   //     let hour=Math.ceil(this.randomNumCustomer(23,65) * this.avgCookieBought)
