@@ -18,45 +18,66 @@
 // *** STEP 1: Grab the window into the DOM ***
 let hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 
-let Seattle = {
-  name: 'Seattle',
-  minCustomer: 23,
-  maxCustomer: 65,
-  avgCookieBought: 6.3,
-  customerNumber: 0,
-  // cookiesPerHour:[],
-  totalDailyCookies: 0,
-  randomNumCustomer: function(min, max) {
-   return Math.floor(Math.random() * (max - min + 1) + min); 
-  },
-
-  getNum: function () {
-    this.customerNumber = this.randomNumCustomer(23,65);
-    return this.customerNumber;
-
-  },
-
-
-  cookiePurchase: [],
-  totalCookies: 0,
-
-  render: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookiesBought = (this.avgCookieBought * this.getNum());
-      console.log (cookiesBought);
-      this.totalCookies += cookiesBought;
-
-      this.cookiePurchase.push(cookiesBought);
-
-    }
-  }      
-            
+function SalmonCookieStand(name, minCustomer, maxCustomer, avgCookieBought) {
+  this.name = name;
+  this.minCustomer = minCustomer;
+  this.maxCustomer = maxCustomer;
+  this.avgCookieBought = avgCookieBought;
+  this.customersPerHour = [];
+  this.cookiesPerHour = [];
+  this.totalDailyCookies = 0;
 }
-Seattle.render(); 
 
-console.log(this.cookiePurchase);
-console.log('TotalSales:', this.totalCookies);
-  
+SalmonCookieStand.prototype.randomNumCustomer = function() {
+  return Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
+}
+
+SalmonCookieStand.prototype.simulateCookies = function() {
+  for (let i = 0; i < hours.length; i++) {
+    let customers = this.randomNumCustomer();
+    this.customersPerHour.push(customers);
+    let cookiesBought = Math.round(this.avgCookieBought * customers);
+    this.cookiesPerHour.push(cookiesBought);
+    this.totalDailyCookies += cookiesBought;
+  }
+}
+
+SalmonCookieStand.prototype.displayResults = function() {
+  let table = document.getElementById('sales-table');
+  let row = document.createElement('tr');
+  let nameCell = document.createElement('td');
+  nameCell.textContent = this.name;
+  row.appendChild(nameCell);
+  for (let i = 0; i < hours.length; i++) {
+    let cookiesCell = document.createElement('td');
+    cookiesCell.textContent = this.cookiesPerHour[i];
+    row.appendChild(cookiesCell);
+  }
+  let totalCell = document.createElement('td');
+  totalCell.textContent = this.totalDailyCookies;
+  row.appendChild(totalCell);
+  table.appendChild(row);
+}
+
+let seattle = new SalmonCookieStand('Seattle', 23, 65, 6.3);
+seattle.simulateCookies();
+seattle.displayResults();
+
+let tokyo = new SalmonCookieStand('Tokyo', 3, 24, 1.2);
+tokyo.simulateCookies();
+tokyo.displayResults();
+
+let dubai = new SalmonCookieStand('Dubai', 11, 38, 3.7);
+dubai.simulateCookies();
+dubai.displayResults();
+
+let paris = new SalmonCookieStand('Paris', 20, 38, 2.3);
+paris.simulateCookies();
+paris.displayResults();
+
+let lima = new SalmonCookieStand('Lima', 2, 16, 4.6);
+lima.simulateCookies();
+lima.displayResults();
   // calculateCookiesPerHour: function(){
   //   for (let i =0; i < hours.length; i++){
   //     let hour=Math.ceil(this.randomNumCustomer(23,65) * this.avgCookieBought)
