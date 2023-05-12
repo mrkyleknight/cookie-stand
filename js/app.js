@@ -147,14 +147,36 @@ hourlyGrandTotal.textContent = `${grandTotal}`;
 footerRow.appendChild(hourlyGrandTotal);
 
 
+
+
+
+let storeForm = document.getElementById('store-form');
+storeForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // the input values
+  let name = document.getElementById('store-name').value;
+  let minCustomer = parseInt(document.getElementById('min-customer').value);
+  let maxCustomer = parseInt(document.getElementById('max-customer').value);
+  let avgCookieBought = parseInt(document.getElementById('avg-cookies').value);
+  
+  // Create the new store
+  let newStore = new SalmonCookieStand(name, minCustomer, maxCustomer, avgCookieBought);
+  newStore.simulateCookies();
+  newStore.displayResults();
+  
+  // Reset form
+  storeForm.reset();
+
+  
+});
+
+
 // for (let i = 0; i < hours.length; i++) {
 //   let hourlyTotalCell = document.createElement('td');
 //   hourlyTotalCell.textContent = hourlyTotal[i];
 //   footerRow.appendChild(hourlyTotalCell);
 // }
-
-
-
 
 
 
