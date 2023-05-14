@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="index.html">Home</a>
   <title>Sales</title>
 </head>
 <body>
@@ -17,7 +18,7 @@ id = "sales-table"
       
     
 
-    <h1>Sales Data</h1>
+    <!-- <h1>Sales Data</h1>
     <h2>Seattle</h2>
     <ul id="seattle-sales">
       
@@ -36,7 +37,7 @@ id = "sales-table"
     </ul>
     <h2>Lima</h2>
     <ul id="lima-sales">
-
+ -->
 
 
     </ul>
@@ -44,24 +45,37 @@ id = "sales-table"
   <script src="app.js"></script>
     </section>
 
-    <h2><a href="sales.html">Sales</a></h2>
+   
     <h2>New Store Subission Form</h2>
     
 
     <form id="store-form">
-      <label for="store-name">Store Name:</label>
-      <input type="text" id="store-name" name="store-name">
+      <fieldset>
+        <legend>Add a New Location</legend>
     
-      <label for="min-customer">Minimum Customers:</label>
-      <input type="number" id="min-customer" name="min-customer">
+        <div>
+          <label for="store-name">Store Name:</label>
+          <input type="text" id="store-name" name="store-name" required>
+        </div>
     
-      <label for="max-customer">Maximum Customers:</label>
-      <input type="number" id="max-customer" name="max-customer">
+        <div>
+          <label for="min-customer">Minimum Customers:</label>
+          <input type="number" id="min-customer" name="min-customer" required>
+        </div>
     
-      <label for="avg-cookies">Average Cookies Bought:</label>
-      <input type="number" id="avg-cookies" name="avg-cookies">
+        <div>
+          <label for="max-customer">Maximum Customers:</label>
+          <input type="number" id="max-customer" name="max-customer" required>
+        </div>
     
-      <button type="submit">Submit</button>
+        <div>
+          <label for="avg-cookies">Average Cookies per Customer:</label>
+          <input type="number" step="0.1" id="avg-cookies" name="avg-cookies" required>
+        </div>
+    
+        <button type="submit">Add Store</button>
+      </fieldset>
+    </form>
     </form>
   </main>
   <footer>&copy; Code Fellows</footer>
