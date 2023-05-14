@@ -9,6 +9,19 @@
   <link rel="stylesheet" href="css/style.css">
   
   <title>Salmon Cookies</title>
+  <style>
+    body {
+    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    color: blue;
+    background-color: wheat;
+    
+  }
+    h1 {
+    font-family: "Cookie", cursive;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+  </style>
 </head>
 <body>
   <header>
@@ -38,14 +51,19 @@
       <h2>Menu</h2>
       <img src="img/5.jpg" alt="lots of fish" width="175" height="200"></img>   <img src="img/cutter.jpeg" alt="lots of fish" width="125 height="200" ></img>
       <ul>
+        <br>
         <li>Original Salmon Cookie</li>
+        <br>
         <li>Chocolate Chip Salmon Cookie</li>
+        <br>
         <li>Oatmeal Raisin Salmon Cookie</li>
       </ul>
       <br>
+      <div id="vote">
       <h2>Hours</h2>
       <h3>6am - Midnight </h3>
     </section><article><img src="img/1.jpg" alt="fish"></article>
+    
     <section id="locations">
       <h2>Locations</h2>
       <br>
@@ -56,9 +74,27 @@
         <li>Paris Location: 33 Rue Cambronne, Paris ,Île-de-France 75015</li>
         <li>Lima Location: 28 La Aguada, Chimbote, Santa Lima, lima, Peru 98934</li>
       </ul><article><img src="img/6.png" alt="fish"></article>
-    </section>
+      <br>
+      <br>
+      <div id="vote">
+      <h2>Vote for Favorite Cookie</h2>
+    
+      <form>
+    <input type="radio" id="red" name="color" value="red">
+    <label for="red">Oatmeal Raisin Salmon Cookie</label><br>
+    <input type="radio" id="blue" name="color" value="blue">
+    <label for="blue">Chocolate Chip Salmon Cookie</label><br>
+    <input type="radio" id="green" name="color" value="green">
+    <label for="green">Original Salmon Cookie</label><br>
+    <br>
+    <label for="email">Enter your email for a chance to win a fish T-shirt:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <button type="submit">Submit</button>
     <section id="contact">
+    </form>
+      <P>WIN ME!!!</P>
       <image src="img/7.jpg" alt="lots of fish" width="175" height="200" ></image>
+    </div>
       <h2>Contact Us</h2>
       <form>
         <label for="name">Name:</label>
@@ -71,7 +107,7 @@
       </form>
     </section>
    <main>
-    <button id="my-button">Click me!</button>
+    
    </main>
    <script src="js/app2.js"></script>
   <footer>

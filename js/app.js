@@ -191,3 +191,9 @@ function renderFooter() {
 }
 
 
+const form = document.getElementById('poll-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent form from submitting normally
+  const selectedOption = document.querySelector('input[name="poll-option"]:checked').value;
+  // process the poll results
+});
